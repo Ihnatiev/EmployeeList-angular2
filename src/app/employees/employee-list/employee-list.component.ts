@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 import { Employee } from '../employee.model';
 import { EmployeesService } from '../employees.service';
@@ -8,9 +9,12 @@ import { EmployeesService } from '../employees.service';
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css'],
+  providers: [EmployeesService]
 })
 export class EmployeeListComponent implements OnInit, OnDestroy {
+  displayedColumns = ['view', 'edit', 'Id', 'Name', 'Active', 'Department', 'delete'];
+
   employees: Employee[] = [];
   totalEmployees = 0;
   employeesPerPage = 5;

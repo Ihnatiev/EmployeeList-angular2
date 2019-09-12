@@ -8,6 +8,7 @@ import { Employee } from './employee.model';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeesService {
+
   private employees: Employee[] = [];
   private employeesUpdated = new Subject<{ employees: Employee[]; employeeCount: number }>();
 
@@ -27,7 +28,7 @@ export class EmployeesService {
               empID: employee.empID,
               empName: employee.empName,
               empActive: employee.empActive,
-              empDepartment: employee.empDepartment
+              empDepartment: employee.dpName
             };
           }),
           maxEmployees: employeeData.maxEmployees
