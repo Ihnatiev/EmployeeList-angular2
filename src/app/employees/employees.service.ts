@@ -48,7 +48,7 @@ export class EmployeesService {
     return this.employeesUpdated.asObservable();
   }
 
-  getEmployee(employeeId: string) {
+  getEmployee(employeeId: number) {
     return this.http.get<{
       empID: number;
       empName: string;
@@ -69,6 +69,27 @@ export class EmployeesService {
     .subscribe(responseData => {
       this.router.navigate(['/']);
     });
+  }
+
+  updateEmployee(empName: string, empActive: boolean, empDepartment: string) {
+    // let employeeData: Employee | FormData;
+    // if (typeof empDepartment === 'number') {
+    // employeeData = new FormData();
+    // employeeData.append('empName', empName);
+    // employeeData.append('empActive', empActive);
+    // employeeData.append('empDepartment', empDepartment);
+    // } else {
+    //   employeeData = {
+    //     empName: empName,
+    //     empActive: empActive,
+    //     empDepartment: empDepartment
+    //   };
+    // }
+    // this.http
+    //   .put('http://localhost:3000/api/employees/' + employeeId, employeeData)
+    //   .subscribe(response => {
+    //     this.router.navigate(['/']);
+    //   });
   }
 
   deleteEmployee(employeeId: number) {

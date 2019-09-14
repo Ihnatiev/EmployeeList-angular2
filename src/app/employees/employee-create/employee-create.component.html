@@ -1,1 +1,25 @@
-<p>employee-create works!</p>
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Add Employee</h4>
+    </div>
+    <form (submit)="onSaveEmployee()" *ngIf="!isLoading">
+        <div>
+            <mat-form-field>
+                <input matInput name="name" ngModel type="name" placeholder="Employee name" #empNameInput="ngModel">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-checkbox>is Active</mat-checkbox>
+        </div>
+        <mat-form-field>
+            <mat-label>Department</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let dep of departments" [value]="dep.dpID">
+                    {{dep.dpName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button color="accent" type="submit">Save Employee</button>
+</mat-card>
